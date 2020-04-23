@@ -1,5 +1,5 @@
 import Vue from "vue";
-import { default as StoryUnit } from "./story-unit.vue";
+import { StoryUnit } from "./story-unit";
 import sampleAudio from "../../01_atoms/narration/sample.mp3";
 
 export default { title: "02_molecules/Story Unit" };

@@ -1,5 +1,5 @@
 import Vue from "vue";
-import { default as Chapter } from "./chapter.vue";
+import { Chapter } from "./chapter";
 
 export default { title: "01_atoms/chapter" };
 

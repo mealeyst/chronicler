@@ -1,6 +1,5 @@
 import Vue from "vue";
-import { default as H1 } from "./h1.vue";
-import { default as H2 } from "./h2.vue";
+import { H1, H2 } from "./index";
 
 export default { title: "01_atoms/headings" };
 

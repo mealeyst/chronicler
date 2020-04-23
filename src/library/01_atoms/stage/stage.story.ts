@@ -1,5 +1,5 @@
 import Vue from "vue";
-import { default as Stage } from "./stage.vue";
+import { Stage } from "./stage";
 
 export default { title: "01_atoms/stage" };
 

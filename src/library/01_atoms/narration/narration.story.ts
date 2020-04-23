@@ -1,5 +1,5 @@
 import Vue from "vue";
-import { default as Narration } from "./narration.vue";
+import { Narration } from "./narration";
 import sampleAudio from "./sample.mp3";
 
 export default { title: "01_atoms/narration" };

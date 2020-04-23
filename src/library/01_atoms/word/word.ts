@@ -1,4 +1,3 @@
-<script lang="ts">
 import Vue from "vue";
 import { Component, Prop } from "vue-property-decorator";
 
@@ -13,7 +12,7 @@ import { Component, Prop } from "vue-property-decorator";
     </span>
   `
 })
-class Word extends Vue {
+export class Word extends Vue {
   @Prop(Number) readonly start: number | undefined;
   @Prop(Number) readonly end: number | undefined;
 
@@ -40,6 +39,3 @@ class Word extends Vue {
     }
   }
 }
-
-export default Word;
-</script>

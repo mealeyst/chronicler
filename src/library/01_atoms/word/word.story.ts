@@ -1,5 +1,5 @@
 import Vue from "vue";
-import { default as Word } from "./word.vue";
+import { Word } from "./word";
 
 export default { title: "01_atoms/word" };
 
