@@ -1,29 +1,35 @@
-# chronicler-class
+# Chronicler - Choose your story
+Chronicler is an interactive audiobook experience. Follow along with the
+reading, and make choices that impact how the story will play out... Or let the
+system choose for you! Built with Vue and Typescript!
 
-## Project setup
-```
-yarn install
-```
+## Installation:
+To install the dependencies for the project run the following command in your
+prompt:
+```npm install```
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+## Running Chronicler:
+To run Chonicler, run the following command in your prompt:
+```npm run serve```
 
-### Compiles and minifies for production
-```
-yarn build
-```
+## Developing Chronicler:
+If you would like to inspect the individual components you can run the following
+command in your prompt to spin up storybook. This is a user interface component
+explorer.
+```npm run storybook:serve```
 
-### Run your unit tests
-```
-yarn test:unit
-```
+## Testing Chronicler:
+To test Chronicler, simply run the following command in your prompt:
+```npm test:unit```
 
-### Lints and fixes files
-```
-yarn lint
-```
+## Deploying Chronicler:
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+To build the code for deployment, simply run the following command in your
+prompt:
+```npm run build```
+
+To deploy the Storybook codebase, simply run the following command in your
+prompt:
+```npm run storybook:build```
+
+Built with love by Shawn Mealey
