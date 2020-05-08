@@ -1,18 +1,25 @@
-import Vue from "vue";
+import { storiesOf } from "@storybook/vue";
+import { text } from "@storybook/addon-knobs";
 import { H1, H2 } from "./index";
 
-export default { title: "01_atoms/headings" };
-
-export const h1 = () => {
-  return {
+storiesOf("01_atoms/headings", module)
+  .add("H1", () => ({
     components: { H1 },
-    template: `<H1>Fantasy Story</H1>`
-  };
-};
-
-export const h2 = () => {
-  return {
+    props: {
+      children: {
+        type: String,
+        default: text("Children", "Fantasy Story")
+      }
+    },
+    template: `<H1>{{children}}</H1>`
+  }))
+  .add("H2", () => ({
     components: { H2 },
-    template: `<H2><a href="#prolog">Prolog</a></H2>`
-  };
-};
+    props: {
+      children: {
+        type: String,
+        default: text("Children", "Prolog")
+      }
+    },
+    template: `<H2>{{children}}</H2>`
+  }));

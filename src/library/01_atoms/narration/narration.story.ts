@@ -1,12 +1,9 @@
-import Vue from "vue";
+import { storiesOf } from "@storybook/vue";
 import { Narration } from "./narration";
 import sampleAudio from "./sample.mp3";
 
-export default { title: "01_atoms/narration" };
-
-export const narration = () => {
-  return {
+storiesOf("01_atoms/narration", module)
+  .add("with audio", () => ({
     components: { Narration },
     template: `<Narration src="${sampleAudio}"/>`
-  };
-};
+  }))

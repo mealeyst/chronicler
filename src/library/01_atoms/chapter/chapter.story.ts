@@ -1,16 +1,19 @@
-import Vue from "vue";
+import { storiesOf } from "@storybook/vue";
+import { text } from "@storybook/addon-knobs";
 import { Chapter } from "./chapter";
 
-export default { title: "01_atoms/chapter" };
-
-export const chapter = () => {
-  return {
-    components: { Chapter },
-    template: `
-<Chapter name="prolog">
-  <h1>Prolog</h1>
-  <p>This is some example content inside of the chapter container.</p>
-</Chapter>
-`
-  };
-};
+storiesOf("01_atoms/chapter", module).add("with children", () => ({
+  component: { Chapter },
+  props: {
+    children: {
+      type: String,
+      default: text(
+        "Children content",
+        "This is some example content inside of the chapter container."
+      )
+    }
+  },
+  template: `
+      <Chapter name="prolog">{{children}}</Chapter>
+    `
+}));

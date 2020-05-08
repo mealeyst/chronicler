@@ -1,25 +1,72 @@
-import Vue from "vue";
+import { storiesOf } from "@storybook/vue";
+import { boolean, text } from "@storybook/addon-knobs";
+import { action } from "@storybook/addon-actions";
 import { Choice, ChoiceTypes } from "./choice";
 
-export default { title: "01_atoms/choice" };
-
-export const neutral = () => {
-  return {
+storiesOf("01_atoms/choice", module)
+  .add("Aggressive", () => ({
     components: { Choice },
-    template: `<Choice type=${ChoiceTypes.Neutral}>What skills can you offer?</Choice>`
-  };
-};
-
-export const friendly = () => {
-  return {
+    props: {
+      isSelected: {
+        type: Boolean,
+        default: boolean("Selected", false)
+      },
+      text: {
+        type: String,
+        default: text("Button Text", "Go away you useless sod!")
+      }
+    },
+    template: `
+     <Choice 
+       :selected="isSelected"
+       type=${ChoiceTypes.Aggressive}
+       @clicked="handleClick">
+       {{text}}
+     </Choice>`,
+    methods: { handleClick: action("clicked") }
+  }))
+  .add("Friendly", () => ({
     components: { Choice },
-    template: `<Choice type=${ChoiceTypes.Friendly}>You can come with us!</Choice>`
-  };
-};
-
-export const aggressive = () => {
-  return {
+    props: {
+      isSelected: {
+        type: Boolean,
+        default: boolean("Selected", false)
+      },
+      text: {
+        type: String,
+        default: text(
+          "Button Text",
+          "We would be thrilled to have you join us!"
+        )
+      }
+    },
+    template: `
+     <Choice 
+       :selected="isSelected"
+       type=${ChoiceTypes.Friendly}
+       @clicked="handleClick">
+       {{text}}
+     </Choice>`,
+    methods: { handleClick: action("clicked") }
+  }))
+  .add("Neutral", () => ({
     components: { Choice },
-    template: `<Choice type=${ChoiceTypes.Aggressive}>Go away you useless sod!</Choice>`
-  };
-};
+    props: {
+      isSelected: {
+        type: Boolean,
+        default: boolean("Selected", false)
+      },
+      text: {
+        type: String,
+        default: text("Button Text", "What skills do you have to offer?")
+      }
+    },
+    template: `
+     <Choice 
+       :selected="isSelected"
+       type=${ChoiceTypes.Neutral}
+       @clicked="handleClick">
+       {{text}}
+     </Choice>`,
+    methods: { handleClick: action("clicked") }
+  }));

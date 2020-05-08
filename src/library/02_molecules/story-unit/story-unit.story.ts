@@ -1,4 +1,4 @@
-import Vue from "vue";
+
 import { StoryUnit } from "./story-unit";
 import sampleAudio from "../../01_atoms/narration/sample.mp3";
 

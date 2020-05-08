@@ -8,9 +8,20 @@ export enum ChoiceTypes {
   Neutral = "2"
 }
 
+const setClasses = (
+  selected: boolean,
+  defaultClasses: Array<string>,
+  selectedClasses: Array<string>
+) => {
+  if (selected) {
+    return selectedClasses;
+  }
+  return defaultClasses;
+};
+
 @Component({
   template: `
-    <button :class="classNames" onClick="clickHandler">
+    <button :class="classNames" v-on:click="onClick">
       <slot></slot>
     </button>
   `
@@ -18,20 +29,47 @@ export enum ChoiceTypes {
 export class Choice extends Vue {
   @Prop(String) readonly className: string | undefined;
   @Prop(String) readonly type!: ChoiceTypes;
-  @Prop(Function) readonly clickHandler: any
-  
+  @Prop(Boolean) readonly selected!: boolean;
+  onClick(): void {
+    this.$emit("clicked", 0.1);
+  }
   get classNames(): string {
-    let textColor = "text-gray-700";
-    console.log(typeof this.type, typeof ChoiceTypes.Friendly);
+    const classes = [
+      "hover:text-white",
+      "p-2",
+      "rounded",
+      "transition",
+      "ease-in",
+      "duration-200"
+    ];
     switch (this.type) {
       case ChoiceTypes.Friendly:
-        console.log('We hitting here baby!')
-        textColor = "text-blue-700";
+        classes.push(
+          ...setClasses(
+            this.selected,
+            ["text-blue-700", "hover:bg-blue-700"],
+            ["text-white", "bg-blue-800"]
+          )
+        );
         break;
       case ChoiceTypes.Aggressive:
-        textColor = "text-red-700";
+        classes.push(
+          ...setClasses(
+            this.selected,
+            ["text-red-700", "hover:bg-red-700"],
+            ["text-white", "bg-red-800"]
+          )
+        );
         break;
+      default:
+        classes.push(
+          ...setClasses(
+            this.selected,
+            ["text-gray-700", "hover:bg-gray-700"],
+            ["text-white", "bg-gray-800"]
+          )
+        );
     }
-    return classNames(textColor, this.className);
+    return classNames(classes.join(" "), this.className);
   }
 }
